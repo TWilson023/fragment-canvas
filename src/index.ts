@@ -20,7 +20,7 @@ export type FragmentCanvasOptions = {
         (
             gl: WebGLRenderingContext,
             location: WebGLUniformLocation,
-            time?: DOMHighResTimeStamp
+            time: DOMHighResTimeStamp
         ) => void
     >;
 
@@ -123,11 +123,11 @@ export default class FragmentCanvas {
         gl.disable(gl.DEPTH_TEST);
 
         if (this.options.autoRender) {
-            this.render();
+            this.render(0);
         }
     }
 
-    render(time?: DOMHighResTimeStamp) {
+    render(time: DOMHighResTimeStamp) {
         // Default uniforms
         this.gl.uniform1f(this.uniformLocations["iTime"], (time ?? 0) / 1000);
         this.gl.uniform2fv(this.uniformLocations["iResolution"], [
@@ -143,6 +143,10 @@ export default class FragmentCanvas {
 
         this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
         this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
+
+        if (this.options.autoRender) {
+            window.requestAnimationFrame(this.render);
+        }
     }
 
     private addShaderToProgram(type: "vertex" | "fragment", source: string) {
