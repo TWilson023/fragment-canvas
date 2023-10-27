@@ -1,6 +1,6 @@
 {
     "name": "fragment-canvas",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Easily render a GLSL fragment shader on an HTML canvas",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
