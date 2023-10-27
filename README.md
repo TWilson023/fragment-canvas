@@ -4,6 +4,13 @@ _Easily render a GLSL fragment shader on an HTML canvas._
 
 **fragment-canvas** is a small package used for rendering fragment shaders on an HTML canvas, similar to those built with [Shadertoy](https://www.shadertoy.com/).
 
+## Examples
+
+Stars ([CodePen](https://codepen.io/TWilson/pen/eYxpjKB))
+
+<img src="https://github.com/TWilson023/fragment-canvas/assets/2547408/c759523a-a139-4631-88f3-d1cfbbb0356c">
+
+
 ## Installation
 
 `yarn add fragment-canvas` or `npm install fragment-canvas`
@@ -41,7 +48,7 @@ To use custom uniforms, provide them via the `uniform` option. Here's an example
 new FragmentCanvas(canvas, {
   fragmentShader: customFragmentShader,
   uniforms: {
-    offset: (gl, location, time) => gl.uniform1f(location, Math.cos(time) * 10),
+    offset: (gl, location, time) => gl.uniform1f(location, Math.cos(time / 1000) * 1.0),
   },
 });
 ```
