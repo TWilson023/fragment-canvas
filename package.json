@@ -17,6 +17,8 @@
         "url": "git+https://github.com/TWilson023/fragment-canvas.git"
     },
     "keywords": [
+        "webgl",
+        "canvas",
         "glsl",
         "fragment",
         "shader",
