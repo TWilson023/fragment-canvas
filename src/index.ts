@@ -59,6 +59,8 @@ export default class FragmentCanvas {
         public canvas: HTMLCanvasElement,
         options?: Partial<FragmentCanvasOptions>
     ) {
+        this.render = this.render.bind(this);
+
         this.options = { ...defaultOptions, ...options };
 
         const gl = canvas.getContext("webgl");
