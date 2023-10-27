@@ -17,7 +17,11 @@ export type FragmentCanvasOptions = {
      */
     uniforms: Record<
         string,
-        (gl: WebGLRenderingContext, location: WebGLUniformLocation) => void
+        (
+            gl: WebGLRenderingContext,
+            location: WebGLUniformLocation,
+            time?: DOMHighResTimeStamp
+        ) => void
     >;
 
     /**
@@ -134,7 +138,7 @@ export default class FragmentCanvas {
         // Custom uniform callbacks
         Object.entries(this.options.uniforms).forEach(([uniform, callback]) => {
             const location = this.uniformLocations[uniform];
-            if (location) callback(this.gl, location);
+            if (location) callback(this.gl, location, time);
         });
 
         this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
