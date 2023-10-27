@@ -127,7 +127,7 @@ export default class FragmentCanvas {
         }
     }
 
-    render(time: DOMHighResTimeStamp) {
+    public render(time: DOMHighResTimeStamp) {
         // Default uniforms
         this.gl.uniform1f(this.uniformLocations["iTime"], (time ?? 0) / 1000);
         this.gl.uniform2fv(this.uniformLocations["iResolution"], [
